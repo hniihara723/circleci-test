@@ -1,0 +1,14 @@
+version: 2.1
+jobs:
+    build:
+        working_directory: $WORKSPACE/src/github.com/circleci-demo
+        docker:
+            - image: golang:latest
+              environment:
+                  GO15VENDOREXPERIMENT: 1
+        steps:
+            - checkout
+            - run:
+                name: "run go code"
+                command: |
+                    go run main.go
