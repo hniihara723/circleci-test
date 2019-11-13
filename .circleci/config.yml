@@ -1,7 +1,7 @@
 version: 2.1
 jobs:
     build:
-        working_directory:$work/src/github.com/kukku723/circleci-demo
+        working_directory: $directory/src/github.com/kukku723/circleci-demo
         docker:
             - image: golang:1.11.4
         steps:
@@ -17,9 +17,9 @@ jobs:
                 name: Run GolangCI-Lint
                 command: ./bin/golangci-lint run --tests --disable-all --enable=goimports --enable=golint --enable=govet --enable=errcheck --enable=staticcheck
 
-#workflows:
-#    golang-workflow:
-#        jobs:
-#            - build:
-#                  go-version: "1.11.5"
-#                  golangci-lint-version: "1.15.0"
+workflows:
+    golang-workflow:
+        jobs:
+            - build:
+                  go-version: "1.11.5"
+                  golangci-lint-version: "1.15.0"
